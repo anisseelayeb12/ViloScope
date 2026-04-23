@@ -8,23 +8,14 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 
 @st.cache_data(show_spinner=False)
 def _charger_dossier():
-    candidats = [
-        "dossier_complet_2023.csv",
-        "dossier_complet-2023.csv",
-        "dossier_complet_2024.csv",
-        "dossier_complet_2025.csv",
-    ]
-    for nom in candidats:
-        path = os.path.join(DATA_DIR, nom)
-        if os.path.exists(path):
-            for sep in ["\t", ",", ";"]:
-                try:
-                    df = pd.read_csv(path, sep=sep, dtype={"CODGEO": str}, low_memory=False)
-                    if "CODGEO" in df.columns and len(df.columns) > 5:
-                        df["CODGEO"] = df["CODGEO"].astype(str).str.zfill(5)
-                        return df
-                except Exception:
-                    continue
+    path = os.path.join(DATA_DIR, "emploi_filtre.csv")
+    if os.path.exists(path):
+        try:
+            df = pd.read_csv(path, dtype={"CODGEO": str}, low_memory=False)
+            df["CODGEO"] = df["CODGEO"].astype(str).str.zfill(5)
+            return df
+        except Exception:
+            pass
     return None
 
 

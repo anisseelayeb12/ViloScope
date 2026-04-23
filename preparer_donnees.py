@@ -161,3 +161,28 @@ def main():
 
 if __name__ == "__main__":
     main()
+# Génération du fichier emploi allégé
+    print("\nGeneration du fichier emploi...")
+    cols_emploi = [
+        "CODGEO",
+        "P20_EMPLT", "P14_EMPLT", "P09_EMPLT",
+        "P20_CHOM1564", "P20_ACT1564",
+        "C20_EMPLT_AGRI", "C20_EMPLT_INDUS",
+        "C20_EMPLT_CONST", "C20_EMPLT_CTS", "C20_EMPLT_APESAS",
+    ]
+    for nom in ["dossier_complet-2023.csv", "dossier_complet_2023.csv",
+                "dossier_complet_2024.csv", "dossier_complet_2025.csv"]:
+        path_dc = os.path.join(DATA_DIR, nom)
+        if os.path.exists(path_dc):
+            for sep in ["\t", ",", ";"]:
+                try:
+                    dc = pd.read_csv(path_dc, sep=sep, dtype={"CODGEO": str},
+                                     usecols=cols_emploi, low_memory=False)
+                    if "CODGEO" in dc.columns:
+                        dc["CODGEO"] = dc["CODGEO"].astype(str).str.zfill(5)
+                        dc.to_csv(os.path.join(DATA_DIR, "emploi_filtre.csv"), index=False)
+                        print(f"  emploi_filtre.csv genere ({len(dc)} communes)")
+                        break
+                except Exception:
+                    continue
+            break
