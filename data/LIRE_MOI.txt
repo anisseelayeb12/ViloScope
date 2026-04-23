@@ -1,0 +1,12 @@
+Placer dans ce dossier les fichiers suivants avant de lancer preparer_donnees.py :
+
+  communes-france-2025.csv
+  dossier_complet_2023.csv
+  dossier_complet_2024.csv
+  dossier_complet_2025.csv
+  ValeursFoncieres-2023.txt
+  ValeursFoncieres-2024.txt
+  ValeursFoncieres-2025.txt
+
+Puis lancer : python preparer_donnees.py
+Cela créera automatiquement dvf_filtre.csv dans ce dossier.

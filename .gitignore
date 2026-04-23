@@ -1,0 +1,28 @@
+# Clés API
+.env
+
+# Gros fichiers DVF bruts
+data/ValeursFoncieres-2023.txt
+data/ValeursFoncieres-2024.txt
+data/ValeursFoncieres-2025.txt
+
+# Fichiers INSEE bruts
+data/dossier_complet_2023.csv
+data/dossier_complet_2024.csv
+data/dossier_complet_2025.csv
+data/dossier_complet_2026.csv
+data/meta_dossier_complet_2023.csv
+data/meta_dossier_complet_2024.csv
+data/meta_dossier_complet_2025.csv
+data/meta_dossier_complet_2026.csv
+
+# Fichier généré (trop lourd pour GitHub)
+data/dvf_filtre.csv
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Cache Streamlit
+.streamlit/cache/
